@@ -78,8 +78,8 @@ public class shoppingListServlet extends HttpServlet {
 
 
         if (action.equals("register")) {
-            String nome_usuario = request.getParameter("username");
-            if (nome_usuario.equals("")) {
+            String name = request.getParameter("username");
+            if (name.equals("")) {
                 String message = "Empty username";
                 request.setAttribute("empty_username", message);
                 getServletContext().getRequestDispatcher("/WEB-INF/register.jsp")
@@ -98,15 +98,8 @@ public class shoppingListServlet extends HttpServlet {
                 }
 
                 list_items.add(get_item);
-                session.setAttribute("items", items);
-
-                ArrayList<String> list_page = (ArrayList<String>) session.getAttribute("list_page");
-                if (list_page == null) {
-                    list_page = new ArrayList<>();
-                }
-
+                session.setAttribute("items", items);          
               
-
             }
         } else if (action.equals("delete")) {
             String selected_item = request.getParameter("item");
